@@ -16,8 +16,8 @@ Shader "Hidden/HDRenderPipeline/Deferred"
             Stencil
             {
                 Ref  [_StencilRef]
-                Comp Equal
-                Pass Keep
+                Comp Always
+                Pass Zero
             }
 
             ZWrite Off

@@ -721,7 +721,7 @@ namespace UnityEngine.Experimental.Rendering.HDPipeline
             RenderTargetIdentifier[] colorRTs = { m_CameraColorBufferRT, m_CameraSubsurfaceBufferRT };
 
             // Output split lighting for materials tagged with the SSS stencil bit.
-            m_LightLoop.RenderDeferredLighting(hdCamera, renderContext, globalDebugParameters.lightingDebugParameters, colorRTs, m_CameraStencilBufferRT, true);
+           // m_LightLoop.RenderDeferredLighting(hdCamera, renderContext, globalDebugParameters.lightingDebugParameters, colorRTs, m_CameraStencilBufferRT, true);
 
             // Output combined lighting for all the other materials.
             m_LightLoop.RenderDeferredLighting(hdCamera, renderContext, globalDebugParameters.lightingDebugParameters, colorRTs, m_CameraStencilBufferRT, false);
