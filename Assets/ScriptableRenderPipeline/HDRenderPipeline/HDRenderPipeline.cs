@@ -537,6 +537,12 @@ namespace UnityEngine.Experimental.Rendering.HDPipeline
 
                 if (m_LightLoop != null)
                 {
+                    // Disable specular highlights when rendering reflection probe
+                    if (camera.cameraType == CameraType.Reflection)
+                    {
+                        m_LightLoop.enableDirectSpecularLighting = false;
+                    }
+
                     using (new Utilities.ProfilingSample("Build Light list", renderContext))
                     {
                         m_LightLoop.PrepareLightsForGPU(m_Owner.shadowSettings, cullResults, camera, ref m_ShadowsResult);
@@ -584,6 +590,12 @@ namespace UnityEngine.Experimental.Rendering.HDPipeline
                 // Planar and real time cubemap doesn't need post process and render in FP16
                 if (camera.cameraType == CameraType.Reflection)
                 {
+                    // re-enable specular hightlight
+                    if (m_LightLoop != null)
+                    {
+                        m_LightLoop.enableDirectSpecularLighting = true;
+                    }
+
                     // Simple blit
                     var cmd = new CommandBuffer { name = "Blit to final RT" };
                     cmd.Blit(m_CameraColorBufferRT, BuiltinRenderTextureType.CameraTarget);

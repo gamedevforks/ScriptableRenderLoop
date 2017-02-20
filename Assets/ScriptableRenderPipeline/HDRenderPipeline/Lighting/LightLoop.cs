@@ -7,6 +7,15 @@ namespace UnityEngine.Experimental.Rendering.HDPipeline
     {
         protected Light m_CurrentSunLight = null;
 
+        // Config parameters
+        protected bool m_enableDirectSpecularLighting = true;
+
+        public bool enableDirectSpecularLighting
+        {
+            get { return m_enableDirectSpecularLighting; }
+            set { m_enableDirectSpecularLighting = value; }
+        }
+
         // TODO: We should rather put the texture settings in LightLoop, but how do we serialize it ?
         public virtual void Build(TextureSettings textureSettings) {}
 

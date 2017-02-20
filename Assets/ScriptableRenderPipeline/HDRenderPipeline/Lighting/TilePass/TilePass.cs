@@ -667,7 +667,7 @@ namespace UnityEngine.Experimental.Rendering.HDPipeline
                 directionalLightData.positionWS = light.light.transform.position;
                 directionalLightData.color = GetLightColor(light);
                 directionalLightData.diffuseScale = additionalData.affectDiffuse ? 1.0f : 0.0f;
-                directionalLightData.specularScale = additionalData.affectSpecular ? 1.0f : 0.0f;
+                directionalLightData.specularScale = additionalData.affectSpecular && enableDirectSpecularLighting ? 1.0f : 0.0f;
                 directionalLightData.invScaleX = 1.0f / light.light.transform.localScale.x;
                 directionalLightData.invScaleY = 1.0f / light.light.transform.localScale.y;
                 directionalLightData.cosAngle = 0.0f;
@@ -747,7 +747,7 @@ namespace UnityEngine.Experimental.Rendering.HDPipeline
                 }
 
                 lightData.diffuseScale = additionalData.affectDiffuse ? 1.0f : 0.0f;
-                lightData.specularScale = additionalData.affectSpecular ? 1.0f : 0.0f;
+                lightData.specularScale = additionalData.affectSpecular && enableDirectSpecularLighting ? 1.0f : 0.0f;
                 lightData.shadowDimmer = additionalData.shadowDimmer;
 
                 lightData.IESIndex = -1;
